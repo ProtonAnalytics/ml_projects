@@ -23,18 +23,18 @@ def main():
     target = "daily_transport_requests"
 
     features = [
-        "region",
+       # "region",
         "day_of_week",
         "month",
-        "weekend_flag",
-        "holiday_flag",
+       #"weekend_flag",
+      #  "holiday_flag",
         "avg_temperature",
-        "precipitation",
-        "wind_speed",
-        "visibility",
-        "trauma_index",
+      #  "precipitation",
+      #  "wind_speed",
+      #  "visibility",
+       "trauma_index",
         "hospital_transfer_volume",
-        "rurality_index",
+        #"rurality_index",
     ]
 
     X = df[features]
@@ -104,8 +104,8 @@ def main():
             ascending=False,
         )
 
-        print("\nTop Features:")
-        print(importance_df.head(10))
+        print("\nFeature Importance Rankings:")
+        print(importance_df.to_string(index=False))
 
         mlflow.log_param("model_type", "RandomForestRegressor")
         mlflow.log_param("n_estimators", 200)
